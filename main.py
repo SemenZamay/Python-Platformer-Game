@@ -46,14 +46,26 @@ def get_block(size):
     path = join("assets", "Terrain", "Terrain.png")
     image = pygame.image.load(path).convert_alpha()
     surface = pygame.Surface((size, size), pygame.SRCALPHA, 32)
-    rect = pygame.Rect(96, 0, size, size)
+    rect = pygame.Rect(0, 128, size, size)
+    # 0, 0 -- 1 col 1 row
+    # 0, 64 -- 1 col 2 row
+    # 0, 128 -- 1 col 3 row
+    # 96, 0 -- 2 col 1 row
+    # 96, 64 -- 2 col 2 row
+    # 96, 128 -- 2 col 3 row
+    # 192, 0 -- 3 col 1 row
+    # 192, 64 -- 3 col 2 row
+    # 192, 128 -- 3 col 3 row
+    # 272, 0 -- 4 col 1 row
+    # 272, 64 -- 4 col 2 row
+    # 272, 128 -- 4 col 3 row
     surface.blit(image, (0, 0), rect)
     return pygame.transform.scale2x(surface)
 
 class Player(pygame.sprite.Sprite):
     COLOR = (255, 0, 0)
     GRAVITY = 1
-    SPRITES = load_sprite_sheets("MainCharacters", "MaskDude", 32, 32, True)
+    SPRITES = load_sprite_sheets("MainCharacters", "NinjaFrog", 32, 32, True)
     ANIMATION_DELAY = 3
 
     def __init__(self, x, y, width, height):
